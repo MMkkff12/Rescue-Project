@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Barking Lot</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="main">
+      <%= image_tag 'barkinglot.jpg', alt: 'The Barking Lot' %>
+    </header>
+    <section class="content">
+      <nav class="side_nav">
+        <ul>
+          <li><b><a href="/">Home</a></b></li>
+          <li><b><a href="/questions">Questions</a></b></li>
+          <li><b><a href="/dogs">Adoptable Dogs</a></b></li>
+          <li><b><a href="/fun">Fun Stuff</a></b></li>
+          <li><b><a href="/admin">Admin</a></b></li>
+        </ul>
+      </nav>
+      <main class='<%= controller.controller_name %>'>
+        <%= yield %>
+      </main>
+    </section> 
+  </body>
+</html>

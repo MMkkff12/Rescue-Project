@@ -1,0 +1,61 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<div style= "background-color: #aac7f3;"><br>
+<h1 style="color: red;"; style="text-align:center;"> Warning!! This page contains editable records!!!</h1>
+<div style= "background-color: #aac7f3;"><br></div>
+<br>
+</div>
+
+<table>
+  <tfoot>
+    <tr>
+      <td colspan="3">
+        <%= link_to 'New dog', new_dog_path %>
+      </td>
+    </tr>
+  </tfoot>
+
+
+  <tbody>
+    <% @dogs.each do |dog| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+
+        <td class="image">
+          <%= image_tag(dog.image_url, class: 'list_image') %>
+        </td>
+
+        <td class="description">
+          <h1><%= dog.name %></h1>
+          <h4><%= "Sex:  " + dog.sex + ",       " %><%= " Breed:  " + dog.breed + ",     " %><%= "Age: " + dog.age + "  Years Old   " %></h4>
+          <h4><%= "Color:  " + dog.color + ",     " %><%= " Size: " + dog.size %></h4>
+          <p>
+            <%= truncate(strip_tags(dog.description),
+                       length: 80) %>
+          </p>
+        </td>
+        <td class="actions">
+          <ul>
+            <li><%= link_to 'Show', dog %></li>
+            <li><%= link_to 'Edit', edit_dog_path(dog) %></li>
+            <li>
+              <%= link_to 'Destroy',
+                           dog,
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>          
+            </li>
+          </ul>
+        </td>
+      </tr>
+
+      
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+
+
